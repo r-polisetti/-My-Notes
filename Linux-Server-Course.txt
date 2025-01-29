@@ -1,0 +1,68 @@
+Linux Server Course - System Configuration and Operation - CBT Nuggets - by Shawn Powers
+----
+<*> Difference between BIOS and UEFI?
+- BIOS(Basic Input Output System)
+- UEFI(Unified Extensible Firmware Interface)
+----
+<*>Differences between BIOS and UEFI:
+---------------------------------------------------------------------------------------------------------------------
+Feature			| 	BIOS								|	UEFI
+---------------------------------------------------------------------------------------------------------------------
+Age				|	Older technology (1980s)			|	Newer (2000s)
+Boot Speed		|	Slower								|	Faster
+Boot 			|	Drive Support	Limited (2TB max)	|	Supports larger drives (more than 2TB)
+Interface		|	Text-based (no graphics)			|	Graphical, mouse-supported interface
+Security		|	No built-in security features		|	Secure Boot to prevent malicious software
+Compatibility	|	Works with 32-bit systems			|	Works with 64-bit systems and 32-bit systems
+Firmware 		|	Size								|	Small, limited capabilities	Larger, more capable firmware
+----
+<*> What is GRUB? or GRUB2?
+- GRUB (Grand Unified Boot Loader)
+Key Differences Between GRUB and GRUB2:They are same, both tell system how to boot and how to mount all the it's partitions.
+------------------------------------------------------------------------------------------------------------------------------------------
+Feature						|	GRUB									|	GRUB2 (Is an advancement over GRUB/LEGECY)
+------------------------------------------------------------------------------------------------------------------------------------------
+Version						|	Original version (older)				|	Updated version (newer)
+Configuration Files			|	menu.lst								|	grub.cfg
+File System Support			|	Limited support for modern file systems	|	Full support for modern file systems (ext4, Btrfs, XFS, etc.)
+Graphical Boot Menus		|	No support for graphical boot menus		|	Supports graphical boot menus (can use themes and backgrounds)
+Support for Multiple OS		|	Limited support							|	Better support for booting multiple operating systems
+Boot Parameters				|	Less flexible							|	More flexible, can pass advanced boot parameters easily
+Customization				|	Harder to customize						|	Easier to customize with themes, custom scripts, and more
+UEFI Support				|	Limited or no support for UEFI			|	Full UEFI support (more modern booting systems)
+Kernel Support				|	Limited kernel options					|	Full kernel support (including custom kernels)
+Boot Speed					|	Slower boot time						|	Faster boot time
+Modular Architecture		|	Less modular							|	More modular, allowing for dynamic loading of modules<>
+----
+<*> Linux boot methods:
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Boot Method					|	Description													|	Example Use Case
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Local Disk Boot				|	Boot from hard drive or SSD (common)|						|	Boot Ubuntu or other OS installed on your system
+USB Boot					|	Boot from a USB flash drive									|	Install or test Linux without affecting your internal disk
+PXE Boot					|	Boot over the network using a PXE server					|	Install or deploy OS on multiple machines in a network
+iPXE Boot					|	Advanced PXE booting over the internet or other protocols	|	Boot Linux from a web server over the internet
+ISO Boot					|	Boot from an ISO image file									|	Use a Live USB/CD or boot a VM from an ISO file
+UEFI Boot					|	Modern boot method for large drives and faster booting		|	Boot modern Linux systems on newer machines with UEFI
+GRUB Boot Loader			|	Boot loader for Linux systems (can use both BIOS and UEFI)	|	Choose between multiple OS or kernel versions during boot
+Live CD/USB Boot			|	Run Linux directly from a CD or USB without installation	|	Troubleshoot, recover, or try out Linux without installing
+----
+<*> Linux boot sequence?
+1. BIOS/UEFI performs hardware checks.
+2. MBR/GPT locates the bootloader.
+3. GRUB loads and configures the Linux kernel.
+4. Linux Kernel initializes hardware and mounts the root filesystem.
+5. initrd/initramfs helps in loading necessary modules and mounting the root filesystem.
+6. systemd/init starts system services.
+7. User Space is initialized, and you can start using the system.
+----
+<*> Boot Modules and files? "/boot/ Contents"
+1. vmlinuz: Compressed Linux Kernel.
+2. initrd/initramfs: Initial RAM Disk/Filesystem.
+3. System.map: Symbol table for debugging.
+4. grub/: GRUB bootloader configuration.
+5. config-<kernel_version>: Kernel configuration file.
+6. grubenv: Stores GRUB environment variables.
+7. efi/: UEFI boot files (for UEFI systems).
+8. lost+found: Orphaned files directory.
+----
