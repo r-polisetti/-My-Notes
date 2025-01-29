@@ -1,0 +1,22 @@
+----
+[Ubuntu:~]Ubuntu is the hostname of the computer.
+[~] : tilde is symbol which shows you the directory you're in.
+[$ hostnamectl]: to check hostname.
+[$ sudo hostnamectl set-hostname newhost]: to set newhostname.
+[$ pwd]: pwd - print working directory. This is will tell you what directory you're in.
+[$ cd]: change the working directory.
+[$ cd ..]: which is to go back.
+[cntl+l]: to clear the screen.
+[$ ls]: ls - list. You can list the contents in folder.
+[$ ls -la] - list all(long all).
+[.] anyfile starting with "." is a hidden file. You can find it only when you use ($ ls -la) command.
+[$ mkdir] - make/create a directory/folder.
+[$ rmdir] - remove/delete a directory/folder.
+[$ cp]- copy files and directories.
+[$ mv] - move (rename) files.
+[$ cat] - concatenate files and print on the standard output.
+[$ echo] - display a line of text.
+[$ locate] - list files in databases that match a pattern.
+[$ updatedb] - update a file name database.
+--[NOTE]-- Files & Directories/Folders are case sensitive in linux.
+[$ passwd] - change user password.
