@@ -54,3 +54,18 @@ Numeric Value	Symbolic Representation	User (Owner)	Group	Others	Total	Descriptio
 	1	--x		1			0	0	1	Execute only for the owner
 	0	---		0			0	0	0	No permissions
 ------------------------------------------------------------------------------------------------------------------------
+Here’s a table format for the common chmod command combinations with their explanations and totals:
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Command		Owner	Group	Others	Total	Description						Best Practice
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+chmod 777	rwx (7)	rwx (7)	rwx (7)	21	Full permissions to owner, group, and others.		Avoid for sensitive files; only for trusted environments.
+chmod 755	rwx (7)	r-x (5)	r-x (5)	17	Full permissions to owner, read/execute for others.	Good for scripts/executables that should not be modified.
+chmod 644	rw- (6)	r-- (4)	r-- (4)	14	Read/write for owner, read-only for group/others.	Common for text files that should only be read by others.
+chmod 600	rw- (6)	--- (0)	--- (0)	6	Read/write for owner only.				Best for sensitive/private files (e.g., private keys).
+chmod 770	rwx (7)	rwx (7)	--- (0)	14	Full permissions to owner/group, none for others.	Shared files between specific users or groups.
+chmod 777 dir	rwx (7)	rwx (7)	rwx (7)	21	Full permissions to all for a directory.		Avoid for directories with sensitive content.
+chmod 700 dir	rwx (7)	--- (0)	--- (0)	7	Full permissions to owner only for a directory.		Use for private directories (e.g., home directories).
+chmod 555	r-x (5)	r-x (5)	r-x (5)	15	Read/execute for owner/group/others.			Use for publicly accessible read-only files.
+chmod 400	r-- (4)	--- (0)	--- (0)	4	Read-only for owner, none for group/others.		Best for files that should only be readable by the owner.
+chmod 744	rwx (7)	r-- (4)	r-- (4)	15	Full permissions to owner, read-only for others.	Use when owner needs full access, and others only need read.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
