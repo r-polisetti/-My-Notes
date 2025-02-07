@@ -1,14 +1,23 @@
 ----
-[Ubuntu:~]Ubuntu is the hostname of the computer.
+[ubuntu@ubuntu ~]$ -> it means username@machinename followed by the current working directory(PWD). 
 [~] : tilde is symbol which shows you the directory you're in.
+[root@Ubuntu:/home/ubuntu#] if the prompt has (#) mark it means the session has superuser privilages, i.e, either root user or adminstrator(superuser).
 [$ hostnamectl]: to check hostname.
+[$ date]: print or set the system date and time.
+[$ ncal]: displays a calendar and the date of Easter.
+[$ df]: report file system disk space usage.
+[$ free]: Display amount of free and used memory in the system.
+[$ exit]/[cntl+D]: cause the shell to exit session.
 [$ sudo hostnamectl set-hostname newhost]: to set newhostname.
 [$ pwd]: pwd - print working directory. This is will tell you what directory you're in.
-[$ cd]: change the working directory.
+[$ cd]: change the working directory to your home directory.
+[$ cd -]: Changes the working directory to the previous working directory.
 [$ cd ..]: which is to go back.
+[$ cd ~user_name]: Changes the working directory to home directory of user_name.
 [cntl+l]: to clear the screen.
 [$ ls]: ls - list. You can list the contents in folder.
 [$ ls -la] - list all(long all).
+[$ ls -lt] - list directory contents[ls],  use a long listing format[-l], sort by modification time, newest first[-t].
 [.] anyfile starting with "." is a hidden file. You can find it only when you use ($ ls -la) command.
 [$ mkdir] - make/create a directory/folder.
 [$ rmdir] - remove/delete a directory/folder.
@@ -18,5 +27,8 @@
 [$ echo] - display a line of text.
 [$ locate] - list files in databases that match a pattern.
 [$ updatedb] - update a file name database.
---[NOTE]-- Files & Directories/Folders are case sensitive in linux.
 [$ passwd] - change user password.
+--[NOTE]-- Files & Directories/Folders are case sensitive in linux.
+--[drwxr-x--- ]-->permissions overview.
+[d] stand for directory.
+[rwx] stands for read, write, execute.
