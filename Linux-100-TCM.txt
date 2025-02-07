@@ -32,3 +32,11 @@
 --[drwxr-x--- ]-->permissions overview.
 [d] stand for directory.
 [rwx] stands for read, write, execute.
+Here’s a table showing chmod numbers with the total sum of the permissions for user, group, and others:
+--------------------------------------------------------------------------------
+Permission | Symbolic | Octal (Number) | User (Owner) | Group | Others | Total
+--------------------------------------------------------------------------------
+Read			r	  |	     4		   |	  4		  |	  4   |	   4   |	12
+Write			w	  |	     2		   |      2		  |	  2	  |	   2   |	6
+Execute			x	  |	     1		   |	  1		  |	  1	  |    1   |	3
+None			-	  |	     0		   |	  0	      |	  0	  |	   0   |	0
