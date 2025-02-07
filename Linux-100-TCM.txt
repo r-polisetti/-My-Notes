@@ -40,3 +40,14 @@ Read	r	4	12
 Write	w	2	6
 Execute	x	1	3
 None	-	0	0
+------------------------------------------------
+Example Permission Combinations:
+Numeric Value	Symbolic Representation	User (Owner)	Group	Others	Total	Description
+	7				rwx		4 + 2 + 1						0	0		7	Read, write, and execute for the owner
+	6				rw-		4 + 2	                        0	0		6	Read and write for the owner, no execute
+	5				r-x		4 + 0							1	0		5	Read and execute for the owner
+	4				r--		4								0	0		4	Read only for the owner
+	3				wx-		2 + 1							0	0		3	Write and execute for the owner
+	2				w--		2								0	0		2	Write only for the owner
+	1				--x		1								0	0		1	Execute only for the owner
+	0				---		0								0	0		0	No permissions
