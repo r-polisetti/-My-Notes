@@ -1,9 +1,10 @@
 -------------------------------------------[ ohmyzsh ]------------------------------------------------
-Installation: 
+1. Installation: 
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ------------------------------------------------------------------------------------------------------
-After intallation open .zshrc and select theme: ZSH_THEME="agnoster"
+2. After intallation open .zshrc and select theme: ZSH_THEME="agnoster"
 -------------------------------------------[ .zshrc flie ]--------------------------------------------
+3. Copy the below content until the END to [.zshrc] file in the location [/] . 
 ------------------------------------------------------------------------------------------------------
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -115,4 +116,4 @@ neofetch
 if [ -t 1 ]; then
   ~/login-dashboard.sh
 fi
--------------------------------------------------------------------------------------------------------------------
+----------------------------------------------[END]------------------------------------------------------------
