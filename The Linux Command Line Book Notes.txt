@@ -1,5 +1,6 @@
 ---- THE LINUX COMMAND LINE BY WILLIAM SHOTTS | NO STARCH PRESS ----
-1. If you see $ls -la [drwxr-xr-x  7 root root   4096 Apr 15 07:28 .config ]
+--------------- Exploring the System -------------------------------
+1. If you see $ls -la this was the output -> [drwxr-xr-x  7 root root   4096 Apr 15 07:28 .config ]
 drwxr-xr-x - Access rights for the file.
 7 - File's number of hard links.
 root - User name of file's owner.
