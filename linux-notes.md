@@ -457,12 +457,19 @@ ansible all -m ping -i inventory
 ## 15. Best Practices
 
 ✅ Always use `sudo` instead of root login
+
 ✅ Regularly update & patch (`apt update && apt upgrade`)
+
 ✅ Monitor logs with `journalctl`
+
 ✅ Use `htop` and `iotop` for performance debugging
+
 ✅ Secure SSH (disable password auth, use keys only)
+
 ✅ Automate backups with cron + rsync
+
 ✅ Use least privilege for file permissions
+
 ✅ Document changes in `/etc/` for team visibility
 
 ## 16. Troubleshooting Scenarios
