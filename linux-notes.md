@@ -465,8 +465,192 @@ ansible all -m ping -i inventory
 ✅ Use least privilege for file permissions
 ✅ Document changes in `/etc/` for team visibility
 
+## 16. Troubleshooting Scenarios
+
+### 🛑 Disk Space Full
+**Symptom:** Errors like `No space left on device`  
+**Check:**
+```bash
+df -h
+du -sh /var/*
+````
+
+**Fix:**
+
+* Clear logs: `sudo journalctl --vacuum-time=7d`
+* Clean apt cache: `sudo apt clean`
+* Remove old kernels: `sudo apt autoremove --purge`
+
 ---
 
+### 🛑 High CPU Usage
 
-Do you want me to also add **real-world troubleshooting scenarios** (like “disk full”, “service not starting”, “high CPU”) with solutions at the end of `linux-notes.md`?
+**Symptom:** System feels slow, fans spinning, `load average` high.
+**Check:**
+
+```bash
+top
+htop        # better visualization
+ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head
 ```
+
+**Fix:**
+
+* Kill runaway process: `sudo kill -9 <pid>`
+* Check cron jobs / scripts running loops
+* Optimize services (e.g., Apache, Java apps)
+
+---
+
+### 🛑 High Memory Usage / OOM Kills
+
+**Symptom:** Apps crash, logs show `Out of memory`.
+**Check:**
+
+```bash
+free -h
+dmesg | grep -i oom
+```
+
+**Fix:**
+
+* Restart memory-hog process
+* Increase swap:
+
+  ```bash
+  sudo fallocate -l 2G /swapfile
+  sudo chmod 600 /swapfile
+  sudo mkswap /swapfile
+  sudo swapon /swapfile
+  ```
+* Optimize service memory usage
+
+---
+
+### 🛑 Service Not Starting
+
+**Symptom:** `systemctl start <service>` fails.
+**Check:**
+
+```bash
+systemctl status servicename
+journalctl -u servicename --no-pager | tail -20
+```
+
+**Fix:**
+
+* Verify config file (e.g., `/etc/nginx/nginx.conf`)
+* Test config before restart (`nginx -t`, `apachectl configtest`)
+* Fix port conflicts with `ss -tulnp | grep 80`
+
+---
+
+### 🛑 SSH Connection Issues
+
+**Symptom:** Cannot SSH into server.
+**Check locally on server:**
+
+```bash
+systemctl status ssh
+ss -tulnp | grep 22
+sudo ufw status
+```
+
+**Fix:**
+
+* Restart service: `sudo systemctl restart ssh`
+* Allow firewall: `sudo ufw allow 22/tcp`
+* Check `/etc/ssh/sshd_config` (disable `PermitRootLogin` but allow key-based login)
+
+---
+
+### 🛑 Network Connectivity Problems
+
+**Symptom:** Server cannot reach internet.
+**Check:**
+
+```bash
+ping 8.8.8.8
+ping google.com
+ip route
+```
+
+**Fix:**
+
+* Check DNS (`/etc/resolv.conf`)
+* Restart networking:
+
+  ```bash
+  sudo systemctl restart NetworkManager
+  ```
+* Check firewall rules
+
+---
+
+### 🛑 File Permission Denied
+
+**Symptom:** `Permission denied` when accessing files.
+**Check:**
+
+```bash
+ls -l file
+```
+
+**Fix:**
+
+* Update permissions: `chmod 644 file`
+* Update ownership: `sudo chown user:user file`
+* Use `sudo` when necessary
+
+---
+
+### 🛑 Time Sync Issues
+
+**Symptom:** Time drift causing SSL or cron issues.
+**Check:**
+
+```bash
+timedatectl status
+```
+
+**Fix:**
+
+```bash
+sudo timedatectl set-ntp true
+```
+
+---
+
+### 🛑 Package Manager Locked (Debian/Ubuntu)
+
+**Symptom:** `Could not get lock /var/lib/dpkg/lock`.
+**Fix:**
+
+```bash
+sudo rm /var/lib/dpkg/lock-frontend
+sudo dpkg --configure -a
+sudo apt update
+```
+
+---
+
+### 🛑 Kernel Panic / Boot Issues
+
+**Symptom:** System fails to boot, panic screen.
+**Fix:**
+
+* Boot into **recovery mode** or use a **live CD/USB**
+* Check logs in `/var/log/boot.log` or `dmesg`
+* Reinstall broken packages / rebuild initramfs
+
+---
+
+## ✅ General Troubleshooting Best Practices
+
+* Always check `systemctl status` and `journalctl -xe` for service issues.
+* Monitor resource usage (`htop`, `iotop`, `vmstat`).
+* Keep backups of configs in `/etc/` before editing.
+* Use version control (git) for important infra configs.
+* Document every fix for future you (and your team).
+
+---
