@@ -1,4 +1,4 @@
-````markdown
+
 # 🐳 Docker Notes
 
 ## Quick Reference Table
