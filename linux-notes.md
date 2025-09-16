@@ -2,6 +2,59 @@
 
 ---
 
+## Quick Reference Table
+
+| Task                  | Command Example |
+|-----------------------|-----------------|
+| Show current directory | `pwd` |
+| Change directory       | `cd /etc` / `cd ..` / `cd -` |
+| List files             | `ls -la` |
+| Create/remove dir      | `mkdir mydir` / `rmdir mydir` |
+| Copy/move files        | `cp file1 file2` / `mv old new` |
+| View file              | `cat file` / `less file` / `tail -f logfile` |
+| Find file              | `locate nginx.conf` |
+| Show hostname          | `hostnamectl` |
+| Show date/time         | `date` |
+| Show memory/disk       | `free -h` / `df -h` / `du -sh *` |
+| Show users/groups      | `whoami` / `groups user` |
+| Add user               | `sudo adduser devuser` |
+| Add to sudo group      | `sudo usermod -aG sudo devuser` |
+| Change password        | `passwd` |
+| File permissions       | `chmod 644 file` / `chown user:group file` |
+| Running processes      | `ps aux` / `top` / `htop` |
+| Kill process           | `kill -9 PID` |
+| Systemd service mgmt   | `systemctl start nginx` / `systemctl enable nginx` |
+| Logs                   | `journalctl -xe` / `tail -f /var/log/syslog` |
+| Network info           | `ip a` / `ss -tulnp` |
+| Ping test              | `ping google.com` |
+| Download file          | `curl -O URL` / `wget URL` |
+| Package mgmt (Ubuntu)  | `sudo apt update && sudo apt install nginx` |
+| Package mgmt (CentOS)  | `sudo yum install nginx` |
+| Archive files          | `tar -cvf backup.tar dir/` |
+| Schedule task (cron)   | `crontab -e` |
+| SSH connect            | `ssh user@server` |
+| Copy over SSH          | `scp file user@server:/path/` |
+| Rsync files            | `rsync -avz file user@server:/path/` |
+| Firewall allow port    | `sudo ufw allow 22/tcp` |
+| Show uptime/load       | `uptime` |
+| Show system info       | `uname -a` / `lsb_release -a` |
+| Docker example         | `docker ps` / `docker run hello-world` |
+| Kubernetes example     | `kubectl get pods` |
+
+---
+
+## 1. Understanding the Shell & Prompts
+- `[ubuntu@ubuntu ~]$` → `username@hostname [current working directory]`
+- `~` → shorthand for home directory
+- `#` → root (superuser) prompt
+- `$` → normal user prompt
+
+👉 Switch to root:
+```bash
+sudo -i
+
+---
+
 ## 1. Understanding the Shell & Prompts
 
 - `[ubuntu@ubuntu ~]$` → `username@hostname [current working directory]`
